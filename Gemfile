@@ -39,6 +39,7 @@ gem 'simple_form'
 
 gem 'will_paginate', '~> 3.1.3'
 
+gem 'devise'
 
 
 # Use ActiveModel has_secure_password

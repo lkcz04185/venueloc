@@ -56,5 +56,8 @@ Rails.application.routes.draw do
   #   end
 
   root 'places#index'
-  resources :places
+  resources :places do
+    resources :comments, only: :create
+  end
+
 end

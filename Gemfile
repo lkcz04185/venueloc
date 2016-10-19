@@ -47,6 +47,7 @@ gem 'figaro', '>= 1.0.0'
 
 gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
 
+gem 'fog'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

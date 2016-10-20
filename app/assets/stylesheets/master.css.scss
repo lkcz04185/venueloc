@@ -11,7 +11,7 @@
   border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
   margin-top: 15px;
   margin-bottom: 15px;
-}
+  }
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0px;
@@ -87,6 +87,7 @@ body {
 #map {
   height: 300px;
 }
+
 .clear {
   clear: both;
 }
@@ -98,6 +99,7 @@ blockquote {
   padding: 0.5em 10px;
   quotes: "\201C""\201D""\2018""\2019";
 }
+
 blockquote:before {
   color: #ccc;
   content: open-quote;
@@ -110,6 +112,9 @@ blockquote p {
   display: inline;
 }
 
-.tab {
-  margin-left: 500px;
-}
+.image-frame {
+  width: 100%;
+  height: 220px;
+  border: 1px solid grey;
+  padding: 5px;
+  }

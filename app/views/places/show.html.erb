@@ -2,7 +2,7 @@
   <h1><%= @place.name %></h1>
   <i><%= @place.address %></i>
   <br/><br/>
-  <p><%= @place.description %></p>
+   <p><%= @place.description %></p>
 
   <% if @place.latitude.present? && @place.longitude.present? %>   
 
@@ -22,7 +22,9 @@
           title: 'Hello World!'
         });
       }
-    </script>
+
+      </script>
+    
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrrE6iJTECeyy1_IwUZtdM0B8Ij6bhnj4&callback=initMap">
     </script>
@@ -39,81 +41,77 @@
     <% end %>
   </div>
 
- <div class:"col-xs-10 col-xs-offset-1">
- <h1 class="pull-left">Comments</h1> 
- </div>
+  <div class:"col-xs-10 col-xs-offset-1">
+    <h1 class="pull-left">Comments</h1> 
+  </div>
  
-
   <!-- Button trigger modal -->
-    <div class:"col-xs-10 col-sm-5 col-lg-5 col-xl-5">
+  <div class:"col-xs-10 col-sm-5 col-lg-5 col-xl-5">
     <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myPictureModal">
     Add a Picture
     </button>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myPictureModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Add a Picture:</h4>
+        </div>
+        
+        <div class="modal-body">
+          <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+            <%= f.input :picture %>
+            <%= f.input :caption %>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <%= f.submit "Add a Picture", class: 'btn btn-primary' %>
+          </div>
+          <% end %>
+        </div>
+        
+      </div>
     </div>
+  </div>
 
   <!-- Button trigger modal -->
-    <div class:"col-xs-10 col-sm-5 col-lg-5 col-xl-5">
+  <div class:"col-xs-10 col-sm-5 col-lg-5 col-xl-5">
     <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">
     Add a Comment
     </button>
-    </div>
-
+  </div>
       
   <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Add a comment:</h4>
-          </div>
-          <div class="modal-body">
-            <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
-            <%= f.input :message %>
-            <%= f.input :rating, as: :select, collection: Comment::RATINGS %>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
-            </div>
-            <% end %>
-          </div>
-          
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Add a comment:</h4>
         </div>
-      </div>
-
-    </div>
- 
-   
- 
- <div class="clear"></div>
-
-
-
-
-<!-- Modal -->
-<div class="modal fade" id="myPictureModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add a Picture:</h4>
-      </div>
-      <div class="modal-body">
-        <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
-          <%= f.input :picture %>
-          <%= f.input :caption %>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <%= f.submit "Add a Picture", class: 'btn btn-primary' %>
+        
+        <div class="modal-body">
+          <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
+          <%= f.input :message %>
+          <%= f.input :rating, as: :select, collection: Comment::RATINGS %>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
+          </div>
+          <% end %>
         </div>
-        <% end %>
+        
       </div>
-      
     </div>
   </div>
-</div>
+  
+  <div class="clear"></div>
 
-    <% @place.comments.each do |comment| %>
+  <% @place.comments.each do |comment| %>
     <div class="col-xs-12 col-sm-6">
       <blockquote>
         <% if comment.humanized_rating.present? %>
@@ -123,21 +121,24 @@
         <small> <%= comment.user.email %></small>
       </blockquote>
     </div>
-    <% end %>
+  <% end %>
 
-    <div class="clear"></div>
+  <div class="clear"></div>
 
-    <div class:"col-xs-10 col-xs-offset-1">
-     <h1 class="pull-left">Images</h1> 
-     </div>
-    <hr>
-    <hr>
+  <div class:"col-xs-10 col-xs-offset-1">
+    <h1 class="pull-left">Images</h1> 
+  </div>
+  
+  <hr>
+  <hr>
 
-    <% @place.photos.each do |photo| %>
+  <% @place.photos.each do |photo| %>
     <div class="col-xs-12 col-sm-6">
-     <%= image_tag photo.picture %>
+      <%= image_tag photo.picture %>
       <br/>
       <%= photo.caption %>
     </div>
-    <% end %>
+  <% end %>
+
+</div>
     

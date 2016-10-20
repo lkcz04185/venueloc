@@ -3,7 +3,7 @@
   <div class="booyah-box col-xs-10 col-xs-offset-1">
     <h1><%= link_to place.name, place_path(place) %></h1>
     <i><%= place.address %></i><br/>
-    <p><%= place.description %></p><br/>
+    <p><%= place.description %></p>
 
     <% if place.user.present? %>
       <small> <%= place.user.email %></small>
@@ -22,9 +22,10 @@
     <% end %>
 
     <% if place.photos.present? %>
-      <div class="col-xs-12">
+      <div class="col-xs-12 col-xs-offset-0.5">
         <% p = place.photos.last %>
         <%= image_tag p.picture %>
+        <br/><br/>
       </div>
     <% end %>
   </div>
@@ -33,5 +34,5 @@
     
 <div class="flickr_pagination">
     <%= will_paginate @places, :container => true %>
-  </div>
+</div>
 

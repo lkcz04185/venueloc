@@ -29,6 +29,7 @@ body {
   -webkit-box-shadow: 0px 2px 5px 10px rgba(0,0,0,0.56);
   -moz-box-shadow: 0px 2px 5px 10px rgba(0,0,0,0.56);
   box-shadow: 0px 2px 5px 10px rgba(0,0,0,0.56);
+  margin-bottom: 10px;
 }
 
 .navbar-inverse .navbar-brand {
@@ -118,3 +119,24 @@ blockquote p {
   border: 1px solid grey;
   padding: 5px;
   }
+
+.carousel {
+  width: 85%;
+  margin: 0 auto;
+  box-shadow: 4px 8px 15px #2a2a2a;
+}
+
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+  max-height: 550px;
+  width: 100%;  
+}
+
+.carousel-caption {
+  font-family: 'exo_2extra_light';
+  font-size: 46px;
+  text-shadow: rgba(0,0,0,0.95) 2px 2px;
+  background-color: rgba(0,0,0,0.5);
+  width: 100%;
+  position: absolute;
+  left: 0;
+}

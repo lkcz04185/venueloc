@@ -1,4 +1,4 @@
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="width: 55%; margin: 0 auto">
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -9,19 +9,19 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active">
-      <%= image_tag 'slider1.JPG' %>
+      <%= image_tag 'slider1.JPG', class: 'img-responsive' %>
       <div class="carousel-caption">
         Find a place to meet. ...
       </div>
     </div>
     <div class="item">
-      <%= image_tag 'slider2.JPG' %>
+      <%= image_tag 'slider2.JPG', class: 'img-responsive'  %>
       <div class="carousel-caption">
         Find a place to eat. ...
       </div>
     </div>
     <div class="item">
-      <%= image_tag 'slider3.JPG' %>
+      <%= image_tag 'slider3.JPG', class: 'img-responsive'  %>
       <div class="carousel-caption">
         Find a place to enjoy. ...
       </div>
